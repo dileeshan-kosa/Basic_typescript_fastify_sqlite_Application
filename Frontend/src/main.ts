@@ -1,9 +1,9 @@
 import "./style.css";
 
-// 1. Grab the empty shell from index.html
+// Grab the empty shell from index.html
 const app = document.querySelector<HTMLDivElement>("#app")!;
 
-// 2. Inject our UI using Template Literals and Tailwind CSS
+// Inject our UI using Template Literals and Tailwind CSS
 app.innerHTML = `
   <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 relative overflow-hidden">
     <h1 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-4">User Management</h1>
@@ -48,9 +48,7 @@ app.innerHTML = `
   </div>
 `;
 
-// ==========================================
-// 3. WIRING IT ALL TOGETHER (DOM Elements)
-// ==========================================
+// WIRING IT ALL TOGETHER (DOM Elements)
 const formSection = document.getElementById("form-section")!;
 const listSection = document.getElementById("list-section")!;
 const showAddBtn = document.getElementById("show-add-btn")!;
@@ -64,21 +62,17 @@ const notificationPopup = document.getElementById('notification-popup')!;
 
 // Helper function to show the notification and hide it after 3 seconds
 function showNotification() {
-  // Slide up and fade in
+
   notificationPopup.classList.remove('translate-y-20', 'opacity-0');
   notificationPopup.classList.add('translate-y-0', 'opacity-100');
 
-  // Wait 3 seconds, then slide down and fade out
   setTimeout(() => {
     notificationPopup.classList.remove('translate-y-0', 'opacity-100');
     notificationPopup.classList.add('translate-y-20', 'opacity-0');
   }, 3000);
 }
 
-// ==========================================
-// 4. THE LOGIC (API Calls & UI Toggles)
-// ==========================================
-
+// THE LOGIC (API Calls & UI Toggles)
 // When "Add User" top tab is clicked: Just show the form
 showAddBtn.addEventListener("click", () => {
   formSection.classList.remove("hidden");
@@ -89,7 +83,7 @@ showAddBtn.addEventListener("click", () => {
 
 // When "Display Users" top tab is clicked: Fetch data AND show the list
 showListBtn.addEventListener('click', async () => {
-  // Toggle the UI
+  
   formSection.classList.add("hidden");
   formSection.classList.remove("block");
   listSection.classList.remove("hidden");
@@ -155,77 +149,4 @@ submitBtn.addEventListener('click', async () => {
     alert('Failed to save user. Make sure your Fastify backend is running!');
   }
 });
-
-
-
-
-// import "./style.css";
-
-// // 1. Grab the empty shell from index.html
-// const app = document.querySelector<HTMLDivElement>("#app")!;
-
-// // 2. Inject our UI using Template Literals and Tailwind CSS
-// app.innerHTML = `
-//   <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-//     <h1 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-4">User Management</h1>
-    
-//     <div class="flex gap-4 mb-8">
-//       <button id="show-add-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-lg transition-colors shadow-sm">
-//         Add User
-//       </button>
-//       <button id="show-list-btn" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium px-5 py-2.5 rounded-lg transition-colors border border-gray-300 shadow-sm">
-//         Display Users
-//       </button>
-//     </div>
-
-//     <div id="form-section" class="block animate-fade-in">
-//       <h2 class="text-xl font-semibold mb-4 text-gray-700">Add a New User</h2>
-//       <div class="space-y-4">
-//         <div>
-//           <label class="block text-sm font-medium text-gray-600 mb-1">Full Name</label>
-//           <input type="text" id="name-input" placeholder="e.g. John Doe" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
-//         </div>
-//         <div>
-//           <label class="block text-sm font-medium text-gray-600 mb-1">Email Address</label>
-//           <input type="email" id="email-input" placeholder="e.g. john@example.com" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
-//         </div>
-//         <button id="submit-btn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold px-4 py-3 rounded-lg transition-colors shadow-md mt-2">
-//           Save to Database
-//         </button>
-//       </div>
-//     </div>
-
-//     <div id="list-section" class="hidden animate-fade-in">
-//       <h2 class="text-xl font-semibold mb-4 text-gray-700">Database Records</h2>
-//       <div id="users-container" class="space-y-3">
-//         <div class="p-4 bg-gray-50 border-l-4 border-blue-500 rounded-r-lg shadow-sm">
-//           <p class="font-bold text-gray-800">Jane Smith</p>
-//           <p class="text-sm text-gray-500">jane.smith@example.com</p>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// `;
-
-// // 3. Add Interactivity (The Logic)
-// const formSection = document.getElementById("form-section")!;
-// const listSection = document.getElementById("list-section")!;
-// const showAddBtn = document.getElementById("show-add-btn")!;
-// const showListBtn = document.getElementById("show-list-btn")!;
-
-// // Switch to Add User view
-// showAddBtn.addEventListener("click", () => {
-//   formSection.classList.remove("hidden");
-//   formSection.classList.add("block");
-//   listSection.classList.add("hidden");
-//   listSection.classList.remove("block");
-// });
-
-// // Switch to Display Users view
-// showListBtn.addEventListener("click", () => {
-//   formSection.classList.add("hidden");
-//   formSection.classList.remove("block");
-//   listSection.classList.remove("hidden");
-//   listSection.classList.add("block");
-// });
 
