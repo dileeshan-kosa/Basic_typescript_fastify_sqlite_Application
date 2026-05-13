@@ -2,10 +2,10 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // Notice we added jsx and tsx here!
+    "./src/**/*.{js,ts}",
   ],
   theme: {
     extend: {},
-  }, 
+  },
   plugins: [],
-} 
+}
